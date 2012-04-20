@@ -1,0 +1,27 @@
+<html>
+	<head>
+	</head>
+</html>
+<script>
+	var myAircraft = {
+	    name: "Cirrus SR22",
+	    getName: function() {
+	        return this.name;
+	    },
+	    fly: function() {
+	        return this.name + ": Flying...";
+	    }
+	};
+
+	console.log(myAircraft.getName());
+	console.log(myAircraft.fly());
+	
+	var myJet = Object.create(myAircraft);
+	myJet.name = "Boeing 747";
+	myJet.fly = function() {
+	    return this.name + ": Flying a jet...";
+	}
+
+	console.log(myJet.getName());
+	console.log(myJet.fly());
+</script>

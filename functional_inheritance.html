@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script type="text/javascript" src="object_extensions.js"></script>
+	</head>
+</html>
+<script>
+	var aircraft = function(spec) {
+	    var that = {};
+	    that.getName = function() {
+	        return spec.name;
+	    };
+	    that.fly = function() {
+	        return spec.name + ": Flying...";
+	    };
+	    return that;
+	};
+	
+	var myAircraft = aircraft({ name: "Cirrus SR22" });
+	console.log(myAircraft.getName());
+	console.log(myAircraft.fly());
+	
+	var jet = function(spec) {
+	    var that = aircraft(spec);
+	    that.fly = function() {
+	        return spec.name + ": Flying a jet...";
+	    };
+	    return that;
+	};
+	
+	var myJet = jet({ name: "Boeing 747" });    
+	console.log(myJet.getName());
+	console.log(myJet.fly());
+	
+	
+	var jet1 = function(spec) {
+	    var that = aircraft(spec),
+	        superFly = that.super("fly");
+	    that.fly = function() {
+	        return superFly() + "a frickin' jet!";
+	    };
+	    return that;
+	};
+
+	var myJet1 = jet1({ name: "Boeing 747" });   
+	console.log(myJet1.fly());
+</script>

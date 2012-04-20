@@ -1,0 +1,32 @@
+<html>
+	<head>
+	</head>
+</html>
+<script>
+	//constructor function
+	var Aircraft = function(name){
+	    this.name = name;
+	};
+	Aircraft.prototype.getName = function() {
+	    return this.name;
+	};
+	Aircraft.prototype.fly = function() {
+	    return this.name + ": Flying...";
+	};
+
+	var cirrus = new Aircraft("Cirrus SR22"); 
+	console.log(cirrus.getName());
+	console.log(cirrus.fly());
+
+	var Jet = function(name){
+	    this.name = name;
+	};
+	Jet.prototype = new Aircraft();
+	Jet.prototype.fly = function() {
+	    return this.name + ": Flying a jet...";
+	};
+
+	var boeing = new Jet("Boeing 747");
+	console.log(boeing.getName());
+	console.log(boeing.fly());
+</script>
